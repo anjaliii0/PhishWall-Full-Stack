@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --amber: #FBBF24;
+  --amber-dim: #D97706;
+  --amber-glow: rgba(251, 191, 36, 0.12);
+  --amber-glow-strong: rgba(251, 191, 36, 0.22);
+  --gray-mid: #4B5563;
+  --gray-dark: #1F2937;
+  --gray-darker: #111827;
+  --gray-darkest: #0D1117;
+  --gray-light: #9CA3AF;
+  --gray-lighter: #D1D5DB;
+  --surface: #1a2332;
+  --surface-2: #243044;
+  --border: rgba(251, 191, 36, 0.15);
+  --border-hover: rgba(251, 191, 36, 0.35);
+  --text-primary: #F9FAFB;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --danger: #EF4444;
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --safe: #10B981;
+  --safe-bg: rgba(16, 185, 129, 0.1);
+  --warn: #F59E0B;
+  --warn-bg: rgba(245, 158, 11, 0.1);
+  --font-mono: 'Montserrat', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --transition: 0.2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--gray-darkest);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-darkest); }
+::-webkit-scrollbar-thumb { background: var(--gray-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--amber-dim); }
+
+/* Utility */
+.amber { color: var(--amber); }
+.mono { font-family: var(--font-mono); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 var(--amber-glow-strong); }
+  70%  { box-shadow: 0 0 0 10px rgba(251,191,36,0); }
+  100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

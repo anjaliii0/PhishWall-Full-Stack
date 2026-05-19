@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+joblib
+scikit-learn
+numpy
+pandas
+requests
+tldextract
+python-whois
+dnspython
+python-multipart
+opencv-python
+pillow
