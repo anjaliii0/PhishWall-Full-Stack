@@ -2,7 +2,6 @@ import re
 import socket
 import datetime
 import ipaddress
-from turtle import pd
 from urllib.parse import urlparse, parse_qs
 import pandas as pd
 

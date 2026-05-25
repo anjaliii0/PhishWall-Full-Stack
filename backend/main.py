@@ -20,7 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(message_router)
-#app.include_router(url_router)
+app.include_router(url_router)
 app.include_router(qr_router)
 
 @app.get("/")
