@@ -13,8 +13,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 url_model_path = os.path.join(BASE_DIR, "models", "url_model.pkl")
 feature_columns_path = os.path.join(BASE_DIR, "models", "url_feature_columns.pkl")
 
-url_model = joblib.load(url_model_path)
-FEATURE_COLS = joblib.load(feature_columns_path)
+# Lazy loading
+url_model = None
+FEATURE_COLS = None
 
 
 class URLRequest(BaseModel):
@@ -39,10 +40,18 @@ def normalize_prediction(prediction):
 
 @router.post("/predict/url")
 def predict_url(request: URLRequest):
+
+    global url_model, FEATURE_COLS
+
+    # Load model only when needed
+    if url_model is None:
+        url_model = joblib.load(url_model_path)
+
+    if FEATURE_COLS is None:
+        FEATURE_COLS = joblib.load(feature_columns_path)
+
     url = request.url.strip()
 
-    # Same logic as Colab:
-    # real URL -> extract features -> align columns -> predict
     X_real = url_to_dataframe(url, FEATURE_COLS, use_network=True)
 
     raw_prediction = url_model.predict(X_real)[0]
